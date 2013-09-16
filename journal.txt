@@ -1,3 +1,0 @@
-Importacion de tabla accounts.
-
-problema: al importar via csv por interfaz sugar 6.4 tira error de datetime
