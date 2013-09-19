@@ -86,17 +86,22 @@ campaign_id
 /*----------------------------------------*/
 require_once("databases.php");
 
-$query = "SELECT * FROM contacts ";
-$query .= "WHERE deleted = 0";
 
 
+$query = "SELECT c.id, c.date_entered, c.date_modified, c.modified_user_id, c.created_by, c.description, c.deleted, c.assigned_user_id, c.salutation, c.first_name, c.last_name, c.title, c.department, c.phone_home, c.phone_mobile, c.phone_work, c.phone_other, c.primary_address_street, c.primary_address_city, c.primary_address_state, c.primary_address_postalcode, c.primary_address_country, c.alt_address_street, c.alt_address_city, c.alt_address_state, c.alt_address_postalcode, c.alt_address_country, c.assistant, c.assistant_phone, c.lead_source, c.reports_to_id, c.birthdate, c.phone_fax, c.email1, c.email2, c.portal_name, c.portal_app, cc.Recibe_PR_c, cc.Remito_PR_c, cc.Recibe_Kairos_c, cc.Remito_Kairos_c ";
+$query .= "FROM contacts c  INNER JOIN contacts_cstm cc on c.id = cc.id_c "; 
+$query .= "AND c.deleted=0";
  
 	$result_query = mysql_query($query, $connection);
  		if (!$result_query) {
 			die("Database query failed: " . mysql_error());
 		}
 
-echo "\"id\",\"date_entered\",\"date_modified\",\"modified_user_id\",\"created_by\",\"description\",\"deleted\",\"assigned_user_id\",\"salutation\",\"first_name\",\"last_name\",\"title\",\"department\",\"phone_home\",\"phone_mobile\",\"phone_work\",\"phone_other\",\"primary_address_street\",\"primary_address_city\",\"primary_address_state\",\"primary_address_postalcode\",\"primary_address_country\",\"alt_address_street\",\"alt_address_city\",\"alt_address_state\",\"alt_address_postalcode\",\"alt_address_country\",\"assistant\",\"assistant_phone\",\"lead_source\",\"reports_to_id\",\"birthdate\",\"\",\"phone_fax\",\"email1\",\"email2\",\"portal_name\",\"portal_app\"";
+
+
+
+
+echo "\"id\",\"date_entered\",\"date_modified\",\"modified_user_id\",\"created_by\",\"description\",\"deleted\",\"assigned_user_id\",\"salutation\",\"first_name\",\"last_name\",\"title\",\"department\",\"phone_home\",\"phone_mobile\",\"phone_work\",\"phone_other\",\"primary_address_street\",\"primary_address_city\",\"primary_address_state\",\"primary_address_postalcode\",\"primary_address_country\",\"alt_address_street\",\"alt_address_city\",\"alt_address_state\",\"alt_address_postalcode\",\"alt_address_country\",\"assistant\",\"assistant_phone\",\"lead_source\",\"reports_to_id\",\"birthdate\",\"\",\"phone_fax\",\"email1\",\"email2\",\"portal_name\",\"portal_app\", \"recibe_pr_c\", \"remito_pr_c\", \"recibe_kairos_c\", \"remito_karos_c\"";
 echo "\n";
 
 	while ($row_query = mysql_fetch_array($result_query)) {
@@ -148,6 +153,13 @@ echo "\n";
 //			echo "\"" . $row_query['portal_active '] . "\", "; //no está en sugar 6_5 y además no nos sirve.
 			echo "\"" . $row_query['portal_app'] . "\", ";
 //			echo "\"" . $row_query['invalid_email '] . "\", ";//no está en sugar 6_5 y además no nos sirve.
+			
+			
+			
+			echo "\"" . $row_query['Recibe_PR_c'] . "\", ";
+			echo "\"" . $row_query['Remito_PR_c'] . "\", ";
+			echo "\"" . $row_query['Recibe_Kairos_c'] . "\", ";
+			echo "\"" . $row_query['Remito_Kairos_c'] . "\"";
 			echo "\n";
 	}
 
