@@ -6,8 +6,11 @@
 # Mon Sep 23 10:19:03 ART 2013
 # LML .-
 
+		echo "Generando accounts.csv...";
 php migra_csv_accounts.php > accounts.csv;
 ex accounts.csv < format.exrc;
+		echo "Listo.";
+		echo "Generando contacts.csv...";
 php migra_csv_contacts.php > contacts.csv;
 ex contacts.csv < format.exrc;
-
+		echo "Listo.";
