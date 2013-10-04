@@ -166,7 +166,7 @@ $query .= "WHERE deleted = 0";
 			echo "'" . $row_query['contact_id'] . "', ";
 			echo "'" . $row_query['portal_flag'] . "', ";
 			echo "'" . $row_query['description'] . "', ";
-			echo "'" . $row_query['deleted'];
+			echo "'" . $row_query['deleted'] . "'";
 			echo ")";
 	
 			$aux=1;
