@@ -152,19 +152,20 @@ $query .= "WHERE deleted = 0";
 		*/
 
 		//***********************************************************************	
-			echo "'" . $row_query['date_modified'] . "', "; //para suplantar assigned_user_id
+			echo "'" . $row_query['modified_user_id'] . "', "; //para el valor assigned_user_id que no existe en sugar_4_2
 			echo "'" . $row_query['id'] . "', ";
 			echo "'" . $row_query['date_entered'] . "', ";
 			echo "'" . $row_query['date_modified'] . "', ";
 			echo "'" . $row_query['modified_user_id'] . "', ";
 			echo "'" . $row_query['created_by'] . "', ";
 			echo "'" . $row_query['name'] . "', ";
-			echo "'" . $row_query['filename'] . "', ";
 			echo "'" . $row_query['file_mime_type'] . "', ";
+			echo "'" . $row_query['filename'] . "', ";
 			echo "'" . $row_query['parent_type'] . "', ";
 			echo "'" . $row_query['parent_id'] . "', ";
 			echo "'" . $row_query['contact_id'] . "', ";
 			echo "'" . $row_query['portal_flag'] . "', ";
+			echo "'0', "; //para el valor embed_flag, el default es 0.
 			echo "'" . $row_query['description'] . "', ";
 			echo "'" . $row_query['deleted'] . "'";
 			echo ")";
